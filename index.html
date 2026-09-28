@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOOKIN — STREET STREAM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="header">
+    <div class="header__inner">
+      <button class="logo" id="logoBtn" type="button">
+        <span class="logo__main">LOOKIN</span>
+        <span class="logo__sub">STREET / LIVE</span>
+      </button>
+
+      <nav class="nav">
+        <button class="nav__link" data-category="Todos">Início</button>
+        <button class="nav__link" data-category="Camisetas">Camisetas</button>
+        <button class="nav__link" data-category="Conjuntos">Conjuntos</button>
+      </nav>
+
+      <button class="cart-btn" id="cartBtn" type="button" aria-label="Ver carrinho">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
+        </svg>
+        <span class="cart-btn__badge" id="cartBadge" hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════ STORE PAGE ═══════════ -->
+  <main id="storePage">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__text">
+        <p class="hero__eyebrow">DROP 01 · STREET LIVE 2026</p>
+        <h1 class="hero__title">
+          SEU LOOK.<br />
+          <em>SUA LIVE.</em>
+          <br />SEM FILTRO.
+        </h1>
+        <p class="hero__desc">
+          Streetwear masculino para quem chega na live e deixa marca. Peças
+          pesadas, atitude de rua e visual feito para destacar.
+        </p>
+        <button class="btn btn--dark" id="heroCta" type="button">ENTRAR NO DROP</button>
+      </div>
+      <div class="hero__media">
+        <img
+          src="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?w=900&h=700&fit=crop&auto=format"
+          alt="Moda masculina elegante"
+        />
+        <div class="hero__overlay"></div>
+      </div>
+    </section>
+
+    <!-- Category filter -->
+    <section class="filter-bar">
+      <div class="filter-bar__inner">
+        <h2 class="section-title">DROP DA SEMANA</h2>
+        <div class="filter-bar__buttons" id="categoryButtons">
+          <button class="chip is-active" data-category="Todos" type="button">Todos</button>
+          <button class="chip" data-category="Camisetas" type="button">Camisetas</button>
+          <button class="chip" data-category="Hoodies" type="button">Hoodies</button>
+          <button class="chip" data-category="Calças" type="button">Calças Cargo</button>
+          <button class="chip" data-category="Jaquetas" type="button">Jaquetas</button>
+          <button class="chip" data-category="Acessórios" type="button">Acessórios</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product grid -->
+    <section class="products">
+      <div class="products__grid" id="productGrid">
+        <!-- Cards inserted by script.js -->
+      </div>
+    </section>
+
+    <footer class="footer">
+      © 2026 LOOKIN · STREETWEAR MASCULINO · AO VIVO
+    </footer>
+  </main>
+
+  <!-- ═══════════ CART PAGE ═══════════ -->
+  <main id="cartPage" class="cart-page" hidden>
+    <div class="cart-page__inner">
+      <button class="back-btn" id="backBtn" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 5l-7 7 7 7" />
+        </svg>
+        Continuar no drop
+      </button>
+
+      <!-- Order confirmation -->
+      <div id="orderConfirmation" class="confirmation" hidden>
+        <div class="confirmation__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a99a" stroke-width="2">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        </div>
+        <h2 class="confirmation__title">PEDIDO NA PISTA!</h2>
+        <p class="confirmation__text">
+          Fechou! Seu pedido entrou na fila. Em breve você recebe a confirmação.
+        </p>
+        <button class="btn btn--dark" id="backToStoreBtn" type="button">VOLTAR PRO DROP</button>
+      </div>
+
+      <!-- Cart content -->
+      <div id="cartContent" class="cart-layout">
+        <div class="cart-left">
+          <h2 class="page-title">MEU CARRINHO</h2>
+
+          <div id="emptyCartMsg" class="empty-cart" hidden>
+            <p>Seu carrinho tá vazio. Bora escolher um drop?</p>
+          </div>
+
+          <div id="cartItemsList" class="cart-items"></div>
+
+          <!-- Delivery form -->
+          <div class="delivery">
+            <h3 class="delivery__title">LOCAL DE ENTREGA</h3>
+            <form id="checkoutForm" class="delivery__form">
+              <div class="field">
+                <label for="name">NOME COMPLETO</label>
+                <input required id="name" name="name" placeholder="João Silva" />
+              </div>
+              <div class="field">
+                <label for="address">Endereço</label>
+                <input required id="address" name="address" placeholder="Rua das Flores, 123 — Apto 45" />
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="city">Cidade</label>
+                  <input required id="city" name="city" placeholder="São Paulo" />
+                </div>
+                <div class="field">
+                  <label for="cep">CEP</label>
+                  <input required id="cep" name="cep" placeholder="01310-100" />
+                </div>
+              </div>
+
+              <div class="payment">
+                <label class="payment__label">FORMA DE PAGAMENTO</label>
+                <div class="payment__options" id="paymentOptions">
+                  <label class="payment__option is-active" data-value="cartao">
+                    <input type="radio" name="payment" value="cartao" checked class="sr-only" />
+                    <span>Cartão de Crédito</span>
+                  </label>
+                  <label class="payment__option" data-value="pix">
+                    <input type="radio" name="payment" value="pix" class="sr-only" />
+                    <span>PIX</span>
+                  </label>
+                  <label class="payment__option" data-value="boleto">
+                    <input type="radio" name="payment" value="boleto" class="sr-only" />
+                    <span>Boleto</span>
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right: order summary -->
+        <div class="cart-right">
+          <div class="summary">
+            <h3 class="summary__title">RESUMO DO DROP</h3>
+
+            <div id="summaryItems" class="summary__items"></div>
+
+            <div class="summary__totals">
+              <div class="summary__row">
+                <span>Subtotal</span>
+                <span id="summarySubtotal">—</span>
+              </div>
+              <div class="summary__row">
+                <span>Frete</span>
+                <span id="summaryFrete">—</span>
+              </div>
+              <p id="freteHint" class="summary__hint" hidden>
+                FRETE GRÁTIS acima de R$ 399,00
+              </p>
+              <div class="summary__row summary__row--total">
+                <span>Total</span>
+                <span id="summaryTotal">R$ 0,00</span>
+              </div>
+            </div>
+
+            <button type="submit" form="checkoutForm" class="btn btn--dark btn--full" id="finalizeBtn" disabled>
+              FECHAR PEDIDO
+            </button>
+
+            <div class="secure-note">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0110 0v4" />
+              </svg>
+              CHECKOUT SEGURO
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
